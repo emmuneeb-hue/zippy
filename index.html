@@ -48,6 +48,16 @@ button{font-family:inherit}
 #install .ap{width:42px;height:42px;border-radius:11px;flex-shrink:0;background:var(--brand) url(icon-192.png) center/cover}
 #install b{display:block;font-size:14px}
 #install button{border:0;border-radius:10px;padding:9px 12px;font-weight:800;font-size:13px;cursor:pointer}
+.ig-step{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);text-align:left}
+.ig-step:last-child{border:0}
+.ig-n{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--zap);font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.ig-step b{font-size:15px;display:block}
+.ig-step span b{font-size:inherit!important;display:inline!important;color:var(--ink)}
+.ig-step span{font-size:13px;color:var(--muted);line-height:1.45;display:block;margin-top:3px}
+.ig-mock{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:13px;font-weight:600;margin-top:8px;color:var(--ink)}
+#ig-arrow{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:99;display:flex;flex-direction:column;align-items:center;gap:4px;color:#fff;font-weight:800;font-size:13px;text-shadow:0 1px 6px #000;pointer-events:none;animation:igb 1s ease-in-out infinite}
+#ig-arrow i{font-style:normal;font-size:34px;line-height:1}
+@keyframes igb{50%{transform:translate(-50%,10px)}}
 #install .x{background:transparent;color:#fff;opacity:.6;padding:6px}
 #stage{position:relative;flex:1;overflow:hidden}
 .view{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;background:var(--bg);-webkit-overflow-scrolling:touch}
@@ -458,7 +468,7 @@ textarea:focus,.inp:focus{border-color:var(--ink)}
     <div id="overlay" class="hidden"></div>
     <div id="notif" onclick="hideNotif();if(TRK)go('track')"><div class="ap" id="notif-ap"></div><div><b id="notif-t"></b><span id="notif-b"></span></div><small>now</small></div>
     <div id="toast"></div>
-    <div id="install" class="hidden"><div class="ap"></div><div style="flex:1"><b>Get the app</b><span id="inst-txt">Add to your home screen for the full app experience</span></div><button id="inst-btn" class="hidden" style="background:var(--brand);color:#fff">Install</button><button class="x" onclick="dismissInstall()">✕</button></div>
+    <div id="install" class="hidden"><div class="ap"></div><div style="flex:1"><b>Get the ZIPPY app</b><span id="inst-txt">Install it on your phone — opens full screen</span></div><button id="inst-btn" style="background:var(--brand);color:#fff">Install</button><button class="x" onclick="dismissInstall()">✕</button></div>
   </div>
 </div>
 
@@ -466,6 +476,7 @@ textarea:focus,.inp:focus{border-color:var(--ink)}
 /* =========================================================
    BRAND — change these two lines to rebrand the whole demo
    ========================================================= */
+const SHARE_ICON='<svg width="18" height="22" viewBox="0 0 18 22" style="vertical-align:-4px"><path d="M9 1v13M4.5 5.5 9 1l4.5 4.5" fill="none" stroke="#2447F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 9H3a1.5 1.5 0 0 0-1.5 1.5v8A1.5 1.5 0 0 0 3 20h12a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 15 9h-2.5" fill="none" stroke="#2447F5" stroke-width="2" stroke-linecap="round"/></svg>';
 const BOLTSVG='<svg viewBox="0 0 100 100"><path d="M58 6 L18 56 H44 L34 94 L80 38 H52 L62 6 Z" fill="#FFD23F"/></svg>';
 const BRAND = { name:"ZIPPY", slogan:"Life moves faster", color:"#2447F5", dark:"#1733C9", soft:"#E4E9FF" };
 
@@ -998,7 +1009,7 @@ function rAccount(){
   $("#v-account").innerHTML=`<div class="hdr" style="border-radius:0"><div class="row"><div class="avatar" style="margin:0;width:56px;height:56px;font-size:26px">👤</div><div><h1 style="font-size:20px">Demo Customer</h1><div class="muted" style="font-size:13px">+357 99 000000</div></div></div></div>
    <div class="block" style="display:flex;text-align:center"><div style="flex:1"><b style="font-size:20px">${ORDERS.length}</b><div class="muted" style="font-size:12px">Orders</div></div><div style="flex:1"><b style="font-size:20px">${FAV.size}</b><div class="muted" style="font-size:12px">Favourites</div></div><div style="flex:1"><b style="font-size:20px">€5</b><div class="muted" style="font-size:12px">Credit</div></div></div>
    <div class="block" style="padding:4px 16px">
-    ${[["📍","Addresses",`go('city')`],["💳","Payment methods",`toast('Visa •••• 4242')`],["❤️","Favourites",`toast('${FAV.size} saved places')`],["🎁","Invite friends, get €5",`toast('Invite link copied')`],["🌐","Language · English / Ελληνικά",`toast('Greek version in full build')`],["🏪","Partner with us (restaurants)",`toast('Restaurant sign-up — full build')`],["🛵","Become a rider",`toast('Rider sign-up — full build')`],["❓","Help & support",`toast('Live chat — full build')`]].map(([i,l,a])=>`<div class="acc-li" onclick="${a}"><span class="ic">${i}</span>${l}<span class="ar">›</span></div>`).join("")}
+    ${[["📲","Install the ZIPPY app",`installAction()`],["📍","Addresses",`go('city')`],["💳","Payment methods",`toast('Visa •••• 4242')`],["❤️","Favourites",`toast('${FAV.size} saved places')`],["🎁","Invite friends, get €5",`toast('Invite link copied')`],["🌐","Language · English / Ελληνικά",`toast('Greek version in full build')`],["🏪","Partner with us (restaurants)",`toast('Restaurant sign-up — full build')`],["🛵","Become a rider",`toast('Rider sign-up — full build')`],["❓","Help & support",`toast('Live chat — full build')`]].map(([i,l,a])=>`<div class="acc-li" onclick="${a}"><span class="ic">${i}</span>${l}<span class="ar">›</span></div>`).join("")}
    </div>
    <div style="padding:16px"><button class="btn ghost" onclick="resetDemo()">↺ Reset demo</button></div><div style="height:80px"></div>`;
 }
@@ -1015,20 +1026,63 @@ function resetDemo(){CART={rid:null,lines:[]};ORDERS=[];TRK=null;FAV=new Set();C
   setupInstall();
 })();
 var INTRO_T,introDone=false;
-function endIntro(){if(introDone)return;introDone=true;clearTimeout(INTRO_T);$("#v-splash").classList.add("out");setTimeout(()=>go("city",{noPush:true,force:true}),420)}
+function endIntro(){if(introDone)return;introDone=true;clearTimeout(INTRO_T);setTimeout(showInstallBanner,1800);$("#v-splash").classList.add("out");setTimeout(()=>go("city",{noPush:true,force:true}),420)}
 function skipIntro(){endIntro()}
 var introStarted=false;
 function startIntro(){if(introStarted)return;introStarted=true;$("#v-splash").classList.add("play");INTRO_T=setTimeout(endIntro,6300)}
 let deferredPrompt=null;
 function isStandalone(){return window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}
 function dismissInstall(){$("#install").classList.add("hidden");try{sessionStorage.setItem("noinst","1")}catch(e){}}
-function setupInstall(){
+const IS_IOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+const IN_APP=/FBAN|FBAV|Instagram|Line\/|Snapchat|musical_ly|Bytedance|GSA\//i.test(navigator.userAgent);
+const IOS_CHROME=/CriOS|FxiOS|EdgiOS/i.test(navigator.userAgent);
+function installAction(){
+  $("#install").classList.add("hidden");
+  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>dismissInstall());return}
+  if(IS_IOS)iosGuide();else androidGuide();
+}
+function iosGuide(){
+  const where=IOS_CHROME?"the Share button "+SHARE_ICON+" in the address bar (top right)":"the Share button "+SHARE_ICON+" at the bottom of Safari";
+  openSheet(`<div class="sh-body" style="text-align:center">
+   <div style="width:64px;height:64px;border-radius:16px;margin:8px auto 10px;background:url(icon-192.png) center/cover"></div>
+   <h2 style="font-size:21px">Install ZIPPY on your iPhone</h2>
+   <p class="muted" style="font-size:13px;margin:6px 0 4px">Takes 10 seconds — then it opens from your home screen like any app.</p>
+   <div style="margin-top:8px">
+    <div class="ig-step"><div class="ig-n">1</div><div><b>Open this page in Safari</b><span>${IN_APP?"You're inside another app's browser. Tap the <b style='display:inline'>⋯</b> menu and choose <b style='display:inline'>Open in Safari</b>.":"Opened from WhatsApp? Tap the <b style='display:inline'>Safari 🧭</b> icon at the bottom right first. Already in Safari or Chrome? Skip this."}</span></div></div>
+    <div class="ig-step"><div class="ig-n">2</div><div><b>Tap the Share button</b><span>It's ${where}.</span><div class="ig-mock">${SHARE_ICON} Share</div></div></div>
+    <div class="ig-step"><div class="ig-n">3</div><div><b>Tap “Add to Home Screen”</b><span>Scroll down the share menu to find it, then tap <b style="display:inline">Add</b> (top right).</span><div class="ig-mock">➕ Add to Home Screen</div></div></div>
+    <div class="ig-step"><div class="ig-n">4</div><div><b>Open ZIPPY from your home screen</b><span>Look for the blue lightning icon. It opens full screen — no browser bars.</span></div></div>
+   </div></div>
+   <div class="sh-foot"><button class="btn" onclick="closeSheet();showArrow()">Got it — show me</button></div>`);
+}
+function androidGuide(){
+  openSheet(`<div class="sh-body" style="text-align:center">
+   <div style="width:64px;height:64px;border-radius:16px;margin:8px auto 10px;background:url(icon-192.png) center/cover"></div>
+   <h2 style="font-size:21px">Install ZIPPY</h2>
+   <div style="margin-top:8px">
+    <div class="ig-step"><div class="ig-n">1</div><div><b>Open in Chrome</b><span>If you opened the link inside WhatsApp or Instagram, tap <b style="display:inline">⋮</b> and choose <b style="display:inline">Open in Chrome</b>.</span></div></div>
+    <div class="ig-step"><div class="ig-n">2</div><div><b>Tap the menu ⋮</b><span>Top right of Chrome.</span></div></div>
+    <div class="ig-step"><div class="ig-n">3</div><div><b>Tap “Install app” or “Add to Home screen”</b><span>Then confirm. The ZIPPY icon appears on your home screen.</span></div></div>
+   </div></div>
+   <div class="sh-foot"><button class="btn" onclick="closeSheet()">Got it</button></div>`);
+}
+function showArrow(){
+  if(!IS_IOS||IOS_CHROME)return;
+  let a=document.getElementById("ig-arrow");if(a)a.remove();
+  a=document.createElement("div");a.id="ig-arrow";a.innerHTML="Tap Share below<i>⬇︎</i>";document.body.appendChild(a);
+  setTimeout(()=>a.remove(),7000);
+}
+function showInstallBanner(){
   if(isStandalone()||window.innerWidth>600)return;
   let seen=false;try{seen=sessionStorage.getItem("noinst")}catch(e){}
   if(seen)return;
-  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("#inst-txt").textContent="Install it like a real app — opens full screen";const b=$("#inst-btn");b.classList.remove("hidden");b.onclick=async()=>{deferredPrompt.prompt();await deferredPrompt.userChoice;dismissInstall()};$("#install").classList.remove("hidden")});
-  if(ios){$("#inst-txt").innerHTML="Tap <b style='display:inline'>Share ⬆︎</b> then <b style='display:inline'>Add to Home Screen</b>";setTimeout(()=>$("#install").classList.remove("hidden"),2600)}
+  $("#inst-btn").textContent=deferredPrompt?"Install":(IS_IOS?"Show me how":"How to install");
+  $("#inst-btn").onclick=installAction;
+  $("#install").classList.remove("hidden");
+}
+function setupInstall(){
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;if(!$("#install").classList.contains("hidden"))$("#inst-btn").textContent="Install"});
+  window.addEventListener("appinstalled",()=>{dismissInstall();toast("ZIPPY installed ✓")});
 }
 </script>
 </body>
