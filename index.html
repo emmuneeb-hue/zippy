@@ -97,6 +97,8 @@ h1,h2,h3,.sec h2,.banner h3,.eta-big h1{font-family:var(--disp);letter-spacing:-
 @keyframes spin{to{transform:rotate(360deg)}}
 .bob{animation:bob .34s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-1.6px)}}
+.hat{transform-origin:192px 88px;animation:hatw .5s ease-in-out infinite alternate}
+@keyframes hatw{to{transform:rotate(-4deg)}}
 .scarf{transform-origin:182px 115px;animation:flap .22s ease-in-out infinite alternate}
 @keyframes flap{to{transform:scaleY(.6) rotate(-6deg)}}
 .beam{animation:flick 1.2s ease-in-out infinite}
@@ -154,7 +156,7 @@ h1,h2,h3,.sec h2,.banner h3,.eta-big h1{font-family:var(--disp);letter-spacing:-
 @keyframes sp{to{transform:rotate(360deg)}}
 
 /* home */
-.hdr{background:var(--card);padding:50px 16px 14px;border-radius:0 0 24px 24px;box-shadow:0 4px 18px rgba(0,0,0,.04)}
+.hdr{position:relative;overflow:hidden;background:var(--card);padding:50px 16px 14px;border-radius:0 0 24px 24px;box-shadow:0 4px 18px rgba(0,0,0,.04)}
 .addr-row{display:flex;align-items:center;gap:10px;cursor:pointer}
 .addr-row .pin{width:38px;height:38px;border-radius:12px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:18px}
 .addr-row small{display:block;font-size:12px;color:var(--muted);font-weight:600}
@@ -177,6 +179,22 @@ h1,h2,h3,.sec h2,.banner h3,.eta-big h1{font-family:var(--disp);letter-spacing:-
 .dots i{width:6px;height:6px;border-radius:9px;background:#d6dae0;transition:.2s}
 .dots i.on{width:18px;background:var(--brand)}
 .hcard{min-width:210px;max-width:210px;scroll-snap-align:start;cursor:pointer}
+.cl .e,.sr .e,.ord .e,.item-hero{position:relative;overflow:hidden}
+.banner .phi{z-index:0;border-radius:0}.banner h3,.banner p,.banner .tag{position:relative;z-index:2}.bshade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,13,18,.88) 0%,rgba(11,13,18,.55) 55%,rgba(11,13,18,.1))}
+.snow{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.snow i{position:absolute;top:-8px;border-radius:50%;background:#fff;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--dx),var(--h,520px))}}
+.lights{position:absolute;top:0;left:0;right:0;height:22px;pointer-events:none;z-index:2}
+.lights:before{content:"";position:absolute;left:-5%;right:-5%;top:-14px;height:24px;border-bottom:1.5px solid #2B2F3A;border-radius:0 0 50% 50%/0 0 100% 100%}
+.lights b{position:absolute;width:7px;height:11px;border-radius:50% 50% 45% 45%;animation:tw 1.4s ease-in-out infinite}
+.lights b:before{content:"";position:absolute;left:1.5px;top:-3px;width:4px;height:4px;background:#2B2F3A;border-radius:1px}
+@keyframes tw{50%{opacity:.35;box-shadow:none}}
+.xmas-line{margin-top:14px;font-size:13px;font-weight:700;color:var(--bg);opacity:0;animation:fade .7s 3.5s forwards;letter-spacing:.5px}
+.xmas-line span{color:#FF5468}
+.phi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;z-index:0}
+.im>*:not(.phi),.rhero>*:not(.phi){z-index:1}
+.rhero .rshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,18,.45) 0%,rgba(11,13,18,0) 35%,rgba(11,13,18,0) 70%,rgba(11,13,18,.25));z-index:1}
+.rhero .tb{z-index:2}
 .hcard .im{height:118px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:54px;position:relative}
 .hcard h4{font-size:15px;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meta{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:600;margin-top:3px;flex-wrap:wrap}
@@ -393,6 +411,7 @@ textarea:focus,.inp:focus{border-color:var(--ink)}
         <div class="intro-top">
           <div class="word"><span style="animation-delay:2.20s">Z</span><span style="animation-delay:2.31s">I</span><span style="animation-delay:2.41s">P</span><span style="animation-delay:2.52s">P</span><span style="animation-delay:2.62s">Y</span></div>
           <div class="slogan">Life moves <b>faster</b></div>
+          <div class="xmas-line">🎄 Merry Christmas, <span>Cyprus</span></div>
         </div>
         <svg class="scene" viewBox="34 52 300 248" preserveAspectRatio="xMidYMax slice">
  <defs>
@@ -416,6 +435,8 @@ textarea:focus,.inp:focus{border-color:var(--ink)}
   <g class="wheel" style="transform-origin:240px 212px"><circle cx="240" cy="212" r="19" fill="#0B0D12" stroke="#2A2F3D" stroke-width="6"/><circle cx="240" cy="212" r="7" fill="#C9CED8"/><path d="M240 196 V228 M224 212 H256 M229 201 L251 223 M251 201 L229 223" stroke="#C9CED8" stroke-width="1.6"/></g>
   <rect x="96" y="124" width="54" height="46" rx="6" fill="#FFD23F" stroke="#0B0D12" stroke-width="2.5"/>
   <rect x="96" y="124" width="54" height="9" rx="4" fill="#E9BC22"/>
+  <rect x="96" y="131" width="54" height="5" fill="#D7263D"/>
+  <path d="M123 125 C112 112 106 124 120 126 Z M124 125 C135 112 141 124 127 126 Z" fill="#D7263D" stroke="#0B0D12" stroke-width="1.5"/><circle cx="123.5" cy="125" r="2.6" fill="#B01A2C"/>
   <g transform="translate(110 137) scale(.27)"><path d="M58 6 L18 56 H44 L34 94 L80 38 H52 L62 6 Z" fill="#2447F5"/></g>
   <path d="M104 206 C104 182 128 170 160 168 L188 168 C194 176 196 192 198 206 Z" fill="url(#body)" stroke="#0B0D12" stroke-width="2"/>
   <rect x="150" y="200" width="70" height="8" rx="3" fill="#1733C9" stroke="#0B0D12" stroke-width="2"/>
@@ -439,6 +460,7 @@ textarea:focus,.inp:focus{border-color:var(--ink)}
   <path d="M178 92 C184 80 200 80 207 90" fill="none" stroke="#2447F5" stroke-width="4" stroke-linecap="round"/>
   <path d="M196 94 C204 92 209 96 208 104 L196 106 Z" fill="#0B0D12"/>
   <path d="M200 96 L205 97" stroke="#8FA6FF" stroke-width="2" stroke-linecap="round"/>
+  <g class="hat"><path d="M177 91 C177 76 168 69 158 70 C171 64 197 66 209 88 Z" fill="#D7263D" stroke="#0B0D12" stroke-width="2" stroke-linejoin="round"/><path d="M176 91 Q193 81 210 89" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="157" cy="70" r="5" fill="#fff"/></g>
   <g transform="translate(181 95) scale(.12)"><path d="M58 6 L18 56 H44 L34 94 L80 38 H52 L62 6 Z" fill="#0B0D12"/></g>
  </g></g></g>
  <g class="zoomlines"><rect x="-120" y="150" width="90" height="2" rx="1" fill="#8FA6FF" style="animation-delay:0s"/><rect x="-120" y="176" width="60" height="2" rx="1" fill="#FFD23F" style="animation-delay:0.08s"/><rect x="-120" y="196" width="110" height="2" rx="1" fill="#F5EFE3" style="animation-delay:0.04s"/><rect x="-120" y="214" width="70" height="2" rx="1" fill="#8FA6FF" style="animation-delay:0.12s"/><rect x="-120" y="128" width="50" height="2" rx="1" fill="#F5EFE3" style="animation-delay:0.06s"/></g>
@@ -564,6 +586,15 @@ const MENUS={
   ["Desserts","Bougatsa","Warm custard pie, icing sugar",4.8,"🥧",[]],
   ["Desserts","NY Cheesecake","Berry coulis",5.9,"🍰",[]],
   ["Ice cream","Gelato · 2 scoops","Pick your flavours",4.5,"🍨",["scoops"]]]},
+ Christmas:{em:"🎄",items:[
+  ["Christmas Specials","Christmas Feast Box","Roast turkey, pork, roast potatoes, gravy, salad & dessert — serves 2",39,"🎄",["drink"]],
+  ["Christmas Specials","Roast Turkey (serves 4)","Whole herb-butter turkey with stuffing, cranberry & sides",54,"🦃",[]],
+  ["Christmas Specials","Slow-roast Pork with Potatoes","Cypriot-style oven pork with lemon potatoes",18.5,"🍖",["drink"]],
+  ["Festive Sweets","Melomakarona & Kourabiedes (12)","Traditional Cypriot Christmas honey cookies & almond shortbread",12,"🍪",[]],
+  ["Festive Sweets","Gingerbread Cookie Box","Hand-iced gingerbread, perfect for gifting",9.5,"🍪",[]],
+  ["Festive Sweets","Christmas Chocolate Cake","Rich chocolate sponge, ganache & festive decoration",24,"🎂",[]],
+  ["Warm Drinks","Hot Chocolate","Thick Belgian chocolate, whipped cream",4.2,"☕",[]],
+  ["Warm Drinks","Marshmallow Hot Chocolate","With toasted marshmallows & cinnamon",4.8,"☕",[]]]},
  Coffee:{em:"☕",items:[
   ["Iced","Freddo Espresso","Double shot, shaken over ice",3.2,"🧋",["sugar","milk"]],
   ["Iced","Freddo Cappuccino","With cold milk foam",3.6,"🧋",["sugar","milk"]],
@@ -572,7 +603,12 @@ const MENUS={
   ["Bakery","Butter Croissant","Baked this morning",2.8,"🥐",[]],
   ["Bakery","Halloumi Pie","Flaky pastry, mint",3.2,"🥐",[]]]}
 };
-const CATS=[["All","🍽️"],["Cypriot","🍖"],["Pizza","🍕"],["Burgers","🍔"],["Sushi","🍣"],["Coffee","☕"],["Breakfast","🍳"],["Lebanese","🧆"],["Healthy","🥗"],["Sweets","🍩"]];
+const PH={"Pork Souvla": "1555939594-58d7cb561ad1", "Chicken Souvlaki Pita": "1734974121561-11aee7d3cebd", "Sheftalia Pita": "1603360946369-dc9bb6258143", "Grilled Halloumi": "1691200007743-0652bbbc1d7d", "Village Salad": "1607532941433-304659e8198a", "Tahini & Pita": "1637949385162-e416fb15b2ce", "Meze for Two": "1619941862585-cd4fa9a4c2cb", "Margherita": "1565299624946-b28f40a0ae38", "Diavola": "1604382354936-07c5d9983bd3", "Halloumi & Honey": "1574071318508-1cdbab80d002", "Quattro Formaggi": "1513104890138-7c749659a591", "Garlic Bread": "1573140401552-3fab0b24306f", "Chicken Wings (8)": "1567620832903-9fc6debc209f", "Tiramisu": "1571877227200-a0d98ea607e9", "Classic Smash": "1568901346375-23c9450c58cd", "Double Bacon": "1586190848861-99aa4a171e90", "Crispy Chicken": "1551782450-a2132b4ba21d", "Halloumi Burger": "1572802419224-296b0aeee0d9", "Fries": "1630384060421-cb20d0e0649d", "Loaded Fries": "1666304752980-678d5c35c911", "Milkshake": "1572490122747-3968b75cc699", "California Roll (8)": "1579584425555-c3ce17fd4351", "Dragon Roll (8)": "1615361200141-f45040f367be", "Spicy Tuna Roll (8)": "1553621042-f6e147245754", "Salmon Nigiri (4)": "1562707786-7d2b807961c4", "Edamame": "1649257171206-37625b1f3b2f", "Pork Gyoza (5)": "1588182728399-e8f2df121744", "Miso Soup": "1680137248903-7af5d51a3350", "Full Breakfast": "1529411081224-84ac0d0bf6ab", "Avocado Toast": "1588137378633-dea1336ce1e2", "Eggs Benedict": "1608039829572-78524f79c4c7", "Pancake Stack": "1528207776546-365bb710ee93", "Belgian Waffle": "1562376552-0d160a2f238d", "Fresh Orange Juice": "1600271886742-f049cd451bba", "Freddo Espresso": "1461023058943-07fcbe16d735", "Mixed Grill": "1532636875304-0c89119d9b4d", "Shish Taouk Plate": "1626323107927-008ae2828ab6", "Falafel Wrap": "1593001872095-7d5b3868fb1d", "Chicken Shawarma": "1662116765994-1e4200c43589", "Hummus": "1697126248475-a537cc5cce28", "Fattoush": "1505253716362-afaea1d3d1af", "Chicken Poke": "1546069901-ba9599a7e63c", "Salmon Poke": "1597958792579-bd3517df6399", "Quinoa & Halloumi": "1512621776951-a57141f2eefd", "Green Smoothie": "1610970881699-44a5587cabec", "Protein Shake": "1553787499-6f9133860278", "Loukoumades": "1618411640018-972400a01458", "Chocolate Soufflé": "1605807646983-377bc5a76493", "Bougatsa": "1554298128-c916518a4b34", "NY Cheesecake": "1524351199678-941a58a3df50", "Freddo Cappuccino": "1559496417-e7f25cb247f3", "Frappé": "1761673930163-8d3d6d73cd7a", "Cypriot Coffee": "1658416439082-02fdbf7fb61c", "Butter Croissant": "1623334044303-241021148842", "Halloumi Pie": "1691480162735-9b91238080f6", "Christmas Feast Box": "1608835149345-b4d77bc490ae", "Roast Turkey (serves 4)": "1606728035253-49e8a23146de", "Slow-roast Pork with Potatoes": "1624174782964-e541742299ee", "Hot Chocolate": "1542990253-0d0f5be5f0ed", "_xmas_banner": "1608835291093-394b0c943a75", "Christmas Chocolate Cake": "1606589121315-122f5983c394", "Melomakarona & Kourabiedes (12)": "1763652271110-46983fdb2a93", "Marshmallow Hot Chocolate": "1639610778379-2ee7856f422d", "Gingerbread Cookie Box": "1610562275255-03b7fa0d4655", "Gelato · 2 scoops": "1648971413826-8377e3c65039"};
+function snow(n,h,op){let o="";for(let i=0;i<n;i++){const sz=(1.5+Math.random()*3).toFixed(1);o+=`<i style="left:${(Math.random()*100).toFixed(1)}%;width:${sz}px;height:${sz}px;opacity:${(op||.85)*(.4+Math.random()*.6)};--dx:${(Math.random()*40-20).toFixed(0)}px;--h:${h||520}px;animation-duration:${(5+Math.random()*7).toFixed(1)}s;animation-delay:-${(Math.random()*10).toFixed(1)}s"></i>`}return `<div class="snow">${o}</div>`}
+function lights(n){const C=["#FF3B3B","#FFD23F","#2BD46B","#4C8DFF"];let o="";for(let i=0;i<n;i++){const x=(i+.5)/n*100,y=Math.sin((i+.5)/n*Math.PI)*5;const c=C[i%4];o+=`<b style="left:calc(${x.toFixed(1)}% - 3px);top:${(3+y).toFixed(1)}px;background:${c};box-shadow:0 0 8px 2px ${c}88;animation-delay:${(i%4)*.35}s"></b>`}return `<div class="lights">${o}</div>`}
+const IMG=(id,w,h)=>"https://images.unsplash.com/photo-"+id+"?w="+w+"&h="+h+"&fit=crop&auto=format&q=70";
+const ph=(id,w,h,cls)=>id?`<img class="phi ${cls||""}" src="${IMG(id,w,h)}" loading="lazy" alt="" onerror="this.remove()">`:"";
+const CATS=[["All","🍽️"],["Christmas","🎄"],["Cypriot","🍖"],["Pizza","🍕"],["Burgers","🍔"],["Sushi","🍣"],["Coffee","☕"],["Breakfast","🍳"],["Lebanese","🧆"],["Healthy","🥗"],["Sweets","🍩"]];
 const NAMES={
  Cypriot:["Platanos Taverna","Mesogios Grill","Yiayia's Kitchen","Souvla Station","To Steki","Anoi Meze House","Kleftiko Corner"],
  Pizza:["Forno Rosso","Napoli Corner","Slice Republic","Vesuvio Pizzeria","Doughboys"],
@@ -582,6 +618,7 @@ const NAMES={
  Lebanese:["Beirut Garden","Cedars Grill","Zaatar House","Al Sultan"],
  Healthy:["Green Bowl","Fresh Fix","Nourish","The Good Bowl"],
  Sweets:["Sugar & Spice","Melo Desserts","Honeycomb","Sweet Lane"],
+ Christmas:["Santa's Kitchen","Yiayia's Christmas Table","Noël Patisserie","The Festive Oven","Christmas Feast Co."],
  Coffee:["Bean There","Freddo Lab","Kafeneio Modern","Daily Grind","Kokkino Coffee"]
 };
 const GR=["linear-gradient(135deg,#C9D5FF,#8FA6FF)","linear-gradient(135deg,#FFE79A,#FFD23F)","linear-gradient(135deg,#F3E6CC,#E4D2AE)","linear-gradient(135deg,#B8E3F0,#7FB7F5)","linear-gradient(135deg,#FFE3C2,#F7C08A)","linear-gradient(135deg,#DDE4FF,#B5C3FF)","linear-gradient(135deg,#FFF1C7,#F5D98B)","linear-gradient(135deg,#CFE8D6,#9FD0B4)","linear-gradient(135deg,#F2DCCB,#E8BFA3)"];
@@ -591,8 +628,8 @@ let seed=42; const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
 const REST=[]; let RID=1;
 CITIES.forEach((c,ci)=>{
   const big=["limassol","nicosia","larnaca","paphos"].includes(c.id);
-  let kinds=["Cypriot","Pizza","Burgers","Sushi","Coffee","Breakfast","Lebanese","Healthy","Sweets"];
-  if(big) kinds=kinds.concat(["Cypriot","Coffee","Burgers"]); else kinds=["Cypriot","Pizza","Burgers","Sushi","Coffee","Sweets","Healthy"];
+  let kinds=["Christmas","Cypriot","Pizza","Burgers","Sushi","Coffee","Breakfast","Lebanese","Healthy","Sweets"];
+  if(big) kinds=kinds.concat(["Cypriot","Coffee","Burgers"]); else kinds=["Christmas","Cypriot","Pizza","Burgers","Sushi","Coffee","Sweets","Healthy"];
   const used={};
   kinds.forEach((k,i)=>{
     used[k]=(used[k]||0);
@@ -604,11 +641,11 @@ CITIES.forEach((c,ci)=>{
       eta:[e1,e1+10],fee:rnd()<.35?0:+(0.99+Math.floor(rnd()*3)).toFixed(2),
       min:[8,10,12,15][Math.floor(rnd()*4)],dist:(0.6+rnd()*4).toFixed(1),
       isNew:rnd()<.28,promo:rnd()<.3?(rnd()<.5?"20% off selected items":"Free item over €20"):null,
-      items:m.items.map(it=>({sec:it[0],name:it[1],desc:it[2],price:Math.round(it[3]*jit*10)/10-.01+.01,em:it[4],opts:it[5]}))
+      items:m.items.map(it=>({sec:it[0],name:it[1],desc:it[2],price:Math.round(it[3]*jit*10)/10-.01+.01,em:it[4],opts:it[5],img:PH[it[1]]||null}))
     });
   });
 });
-REST.forEach(r=>r.items.forEach(it=>it.price=Math.round(it.price*10)/10));
+REST.forEach(r=>{r.items.forEach(it=>it.price=Math.round(it.price*10)/10);const c=r.items.filter(i=>i.img);r.img=c.length?c[(r.id*2)%Math.min(3,c.length)].img:null;if(r.cuisine==="Christmas"){r.promo="🎄 Christmas menu";r.isNew=true}});
 
 /* ================= STATE ================= */
 let CITY=CITIES[0], ADDR={area:"Germasogeia",street:"28 Oktovriou 112",floor:""};
@@ -654,7 +691,7 @@ function updCartBar(){
 /* ================= CITY / GPS ================= */
 function rCity(){
   $("#v-city").innerHTML=`
-   <div class="loc-hero top-safe">
+   <div class="loc-hero top-safe">${snow(40,300)}
      ${stack.length?`<button class="iconbtn" onclick="back()" style="background:#ffffff33;color:#fff;box-shadow:none">‹</button>`:`<div class="logo-sm"><span class="zm">${BOLTSVG}</span>${BRAND.name}</div>`}
      <h1>Where should we deliver?</h1>
      <p>${BRAND.slogan} · ${CITIES.length} areas across Cyprus</p>
@@ -686,18 +723,19 @@ function rHome(){
   if(sort==="fee")main.sort((a,b)=>a.fee-b.fee);
   const nw=list.filter(r=>r.isNew), fr=list.filter(r=>r.fee===0);
   $("#v-home").innerHTML=`
-   <div class="hdr">
+   <div class="hdr">${lights(14)}
      <div class="addr-row" onclick="go('city')"><div class="pin">📍</div><div><small>Deliver now · ${CITY.name}</small><b>${ADDR.street}, ${ADDR.area} ▾</b></div><div class="avatar" onclick="event.stopPropagation();go('account')">👤</div></div>
      <div class="searchbar" onclick="go('search')">🔍 <span>Restaurants, dishes, cuisines…</span></div>
    </div>
    <div class="cats">${CATS.map(([c,e])=>`<div class="cat ${c===cat?'on':''}" onclick="setCat('${c}')"><div class="ci">${e}</div>${c}</div>`).join("")}</div>
    ${cat==="All"?`
    <div style="margin-top:14px" class="hs" id="banners" onscroll="bannerDots()">
+     <div class="banner" style="background:#0B0D12" onclick="setCat('Christmas')">${ph(PH._xmas_banner,900,320)}<div class="bshade"></div><h3>Christmas feasts, delivered 🎄</h3><p>Turkey, roast pork & melomakarona — order ahead for 24–25 Dec.</p><span class="tag" style="background:#D7263D;color:#fff">XMAS15 · 15% OFF</span></div>
      <div class="banner" style="background:linear-gradient(120deg,${BRAND.color},${BRAND.dark})" onclick="toast('Code WELCOME20 copied — use it at checkout')"><h3>20% off your first order</h3><p>Any restaurant in ${CITY.name}. Max discount €8.</p><span class="tag">WELCOME20</span><div class="big">🎁</div></div>
      <div class="banner" style="background:linear-gradient(120deg,#0B0D12,#2A2E38)" onclick="sort='fee';rHome()"><h3>Free delivery week ⚡</h3><p>On dozens of places near you, orders over €15.</p><span class="tag" style="background:#FFD23F">See places</span><div class="big">🛵</div></div>
      <div class="banner" style="background:#FFD23F;color:#0B0D12" onclick="setCat('Coffee')"><h3>Freddo in 20 minutes</h3><p>Your favourite coffee, ice cold, to your door.</p><span class="tag" style="background:#0B0D12;color:#FFD23F">Order coffee</span><div class="big">🧋</div></div>
    </div>
-   <div class="dots" id="bdots"><i class="on"></i><i></i><i></i></div>
+   <div class="dots" id="bdots"><i class="on"></i><i></i><i></i><i></i></div>
    ${nw.length?`<div class="sec"><h2>New on ${BRAND.name}</h2><a onclick="toast('${nw.length} new places this month')">See all</a></div><div class="hs">${nw.map(hcard).join("")}</div>`:""}
    ${fr.length?`<div class="sec"><h2>Free delivery 🛵</h2><a onclick="sort='fee';rHome()">See all</a></div><div class="hs">${fr.map(hcard).join("")}</div>`:""}
    `:""}
@@ -706,17 +744,17 @@ function rHome(){
    ${main.length?main.map(vcard).join(""):`<div class="empty"><div class="e">🍽️</div><h3>Nothing here yet</h3>No ${cat} places in ${CITY.name} — try another category.</div>`}
    <div style="height:100px"></div>`;
   clearInterval(bannerTimer);
-  if(cat==="All")bannerTimer=setInterval(()=>{const b=$("#banners");if(!b||cur!=="home")return;const w=b.firstElementChild.offsetWidth+10;let n=Math.round(b.scrollLeft/w)+1;if(n>2)n=0;b.scrollTo({left:n*w,behavior:"smooth"})},4000);
+  if(cat==="All")bannerTimer=setInterval(()=>{const b=$("#banners");if(!b||cur!=="home")return;const w=b.firstElementChild.offsetWidth+10;let n=Math.round(b.scrollLeft/w)+1;if(n>3)n=0;b.scrollTo({left:n*w,behavior:"smooth"})},4000);
 }
 function bannerDots(){const b=$("#banners");if(!b)return;const w=b.firstElementChild.offsetWidth+10;const n=Math.round(b.scrollLeft/w);document.querySelectorAll("#bdots i").forEach((d,i)=>d.classList.toggle("on",i===n))}
 function setCat(c){cat=c;rHome();$("#v-home").scrollTop=0}
 function feeTxt(r){return r.fee===0?"Free delivery":eur(r.fee)+" delivery"}
-function hcard(r){return `<div class="hcard" onclick="openRest(${r.id})"><div class="im" style="background:${r.grad}">${r.em}
+function hcard(r){return `<div class="hcard" onclick="openRest(${r.id})"><div class="im" style="background:${r.grad}">${r.img?ph(r.img,520,320):r.em}
   ${r.promo?`<span class="badge">%</span>`:r.isNew?`<span class="badge new">NEW</span>`:""}
   <div class="fav" onclick="event.stopPropagation();toggleFav(${r.id},this)">${FAV.has(r.id)?"❤️":"🤍"}</div>
   <span class="eta-pill">${r.eta[0]}–${r.eta[1]} min</span></div>
   <h4>${r.name}</h4><div class="meta"><span class="st">⭐ ${r.rating}</span>·<span>${r.cuisine}</span>·<span>${feeTxt(r)}</span></div></div>`}
-function vcard(r){return `<div class="vcard" onclick="openRest(${r.id})"><div class="im" style="background:${r.grad}">${r.em}
+function vcard(r){return `<div class="vcard" onclick="openRest(${r.id})"><div class="im" style="background:${r.grad}">${r.img?ph(r.img,520,320):r.em}
   ${r.promo?`<span class="badge">${r.promo}</span>`:r.isNew?`<span class="badge new">NEW</span>`:""}
   <div class="fav" onclick="event.stopPropagation();toggleFav(${r.id},this)">${FAV.has(r.id)?"❤️":"🤍"}</div>
   <span class="eta-pill">🛵 ${r.eta[0]}–${r.eta[1]} min</span></div>
@@ -739,8 +777,8 @@ function searchRes(){
    <div class="res-h">Cuisines</div>${CATS.slice(1).map(([c,e])=>`<div class="sr" onclick="cat='${c}';go('home')"><div class="e" style="background:var(--bg)">${e}</div><div><h4>${c}</h4><small>${cityRests().filter(r=>r.cuisine===c).length} places</small></div></div>`).join("")}<div style="height:90px"></div>`;return}
   const rs=cityRests().filter(r=>r.name.toLowerCase().includes(t)||r.cuisine.toLowerCase().includes(t));
   const ds=[];cityRests().forEach(r=>r.items.forEach((it,i)=>{if(it.name.toLowerCase().includes(t)||it.desc.toLowerCase().includes(t))ds.push([r,it,i])}));
-  box.innerHTML=(rs.length?`<div class="res-h">Restaurants</div>`+rs.map(r=>`<div class="sr" onclick="openRest(${r.id})"><div class="e" style="background:${r.grad}">${r.em}</div><div><h4>${r.name}</h4><small>⭐ ${r.rating} · ${r.cuisine} · ${r.eta[0]}–${r.eta[1]} min</small></div></div>`).join(""):"")
-   +(ds.length?`<div class="res-h">Dishes</div>`+ds.slice(0,25).map(([r,it,i])=>`<div class="sr" onclick="openRest(${r.id});setTimeout(()=>openItem(${r.id},${i}),250)"><div class="e" style="background:var(--bg)">${it.em}</div><div style="flex:1"><h4>${it.name}</h4><small>${r.name} · ${eur(it.price)}</small></div></div>`).join(""):"")
+  box.innerHTML=(rs.length?`<div class="res-h">Restaurants</div>`+rs.map(r=>`<div class="sr" onclick="openRest(${r.id})"><div class="e" style="background:${r.grad}">${r.img?ph(r.img,120,120):r.em}</div><div><h4>${r.name}</h4><small>⭐ ${r.rating} · ${r.cuisine} · ${r.eta[0]}–${r.eta[1]} min</small></div></div>`).join(""):"")
+   +(ds.length?`<div class="res-h">Dishes</div>`+ds.slice(0,25).map(([r,it,i])=>`<div class="sr" onclick="openRest(${r.id});setTimeout(()=>openItem(${r.id},${i}),250)"><div class="e" style="background:var(--bg)">${it.img?ph(it.img,120,120):it.em}</div><div style="flex:1"><h4>${it.name}</h4><small>${r.name} · ${eur(it.price)}</small></div></div>`).join(""):"")
    +(!rs.length&&!ds.length?`<div class="empty"><div class="e">🔎</div><h3>No results for “${q}”</h3>Try a dish or cuisine instead.</div>`:"")+`<div style="height:90px"></div>`;
 }
 
@@ -751,7 +789,7 @@ function rRest(){
   const r=R(RCUR); if(!r)return;
   const secs=[...new Set(r.items.map(i=>i.sec))];
   $("#v-rest").innerHTML=`
-   <div class="rhero" style="background:${r.grad}"><div class="tb"><button class="iconbtn" onclick="back()">‹</button><div style="display:flex;gap:8px"><button class="iconbtn" onclick="toast('Link copied')">↗</button><button class="iconbtn" onclick="toggleFav(${r.id},this)">${FAV.has(r.id)?"❤️":"🤍"}</button></div></div>${r.em}</div>
+   <div class="rhero" style="background:${r.grad}">${r.img?ph(r.img,900,520,"rh"):""}<div class="rshade"></div><div class="tb"><button class="iconbtn" onclick="back()">‹</button><div style="display:flex;gap:8px"><button class="iconbtn" onclick="toast('Link copied')">↗</button><button class="iconbtn" onclick="toggleFav(${r.id},this)">${FAV.has(r.id)?"❤️":"🤍"}</button></div></div></div>
    <div class="rinfo">
      <h1>${r.name}</h1>
      <div class="meta" style="margin-top:6px;font-size:13px"><span class="st">⭐ ${r.rating}</span><span>(${r.reviews}+ ratings)</span>·<span>${r.cuisine}</span>·<span>${r.dist} km</span></div>
@@ -761,7 +799,7 @@ function rRest(){
    <div class="tabs">${secs.map((s,i)=>`<div class="chip ${i===0?'on':''}" onclick="jump(${i},this)">${s}</div>`).join("")}</div>
    <div class="menu">${secs.map((s,si)=>`<h2 id="sec-${si}">${s}</h2>`+r.items.map((it,i)=>it.sec!==s?"":`
      <div class="mi" onclick="openItem(${r.id},${i})"><div class="tx"><h4>${it.name}</h4><p>${it.desc}</p><div class="pr">${eur(it.price)}${r.promo&&r.promo.startsWith("20")&&i%3===0?`<s>${eur(it.price*1.25)}</s>`:""}</div></div>
-     <div class="th">${it.em}${qtyOf(r.id,i)?`<span class="qb">${qtyOf(r.id,i)}</span>`:""}<span class="plus">+</span></div></div>`).join("")).join("")}</div>`;
+     <div class="th">${it.img?ph(it.img,220,220):it.em}${qtyOf(r.id,i)?`<span class="qb">${qtyOf(r.id,i)}</span>`:""}<span class="plus">+</span></div></div>`).join("")).join("")}</div>`;
 }
 function jump(i,el){document.querySelectorAll("#v-rest .tabs .chip").forEach(c=>c.classList.remove("on"));el.classList.add("on");const s=$("#sec-"+i);$("#v-rest").scrollTo({top:s.offsetTop-60,behavior:"smooth"})}
 
@@ -774,7 +812,7 @@ function openItem(rid,idx){
   IS={rid,idx,qty:1,sel:{}};
   it.opts.forEach(k=>{IS.sel[k]=OPT[k].req?[0]:[]});
   openSheet(`<div class="sh-body">
-    <div class="item-hero" style="background:${r.grad}">${it.em}</div>
+    <div class="item-hero" style="background:${r.grad}">${it.img?ph(it.img,900,560):it.em}</div>
     <h2 style="font-size:22px;letter-spacing:-.4px">${it.name}</h2>
     <p class="muted" style="margin-top:6px;font-size:14px;line-height:1.45">${it.desc}</p>
     <div style="font-weight:800;font-size:17px;margin-top:10px">${eur(it.price)}</div>
@@ -805,7 +843,7 @@ function addToCart(force){
   const key=IS.idx+"|"+opts.map(o=>o[0]).join(",")+"|"+note;
   CART.rid=IS.rid;
   const ex=CART.lines.find(l=>l.key===key);
-  if(ex)ex.qty+=IS.qty;else CART.lines.push({key,idx:IS.idx,name:it.name,em:it.em,base:it.price,opts,qty:IS.qty,note});
+  if(ex)ex.qty+=IS.qty;else CART.lines.push({key,idx:IS.idx,name:it.name,em:it.em,img:it.img,base:it.price,opts,qty:IS.qty,note});
   closeSheet(); toast("✓ Added "+it.name); updCartBar(); if(cur==="rest")rRest();
 }
 
@@ -815,10 +853,10 @@ function rCart(){
   if(!CART.lines.length){v.innerHTML=`<div class="pghead"><button class="iconbtn" onclick="back()">‹</button><h1>Basket</h1></div><div class="empty"><div class="e">🧺</div><h3>Your basket is empty</h3>Add something tasty to get started.<div style="margin-top:20px"><button class="btn" onclick="go('home')">Browse restaurants</button></div></div>`;return}
   const r=R(CART.rid); const sub=cartSub(); const short=Math.max(0,r.min-sub);
   v.innerHTML=`<div class="pghead"><button class="iconbtn" onclick="back()">‹</button><div><h1>Basket</h1><small class="muted" style="font-weight:600">${r.name}</small></div></div>
-   <div class="block">${CART.lines.map((l,i)=>`<div class="cl"><div class="e">${l.em}</div><div class="tx"><h4>${l.name}</h4>${l.opts.length||l.note?`<small>${l.opts.map(o=>o[0]).join(", ")}${l.note?(l.opts.length?" · ":"")+"“"+l.note+"”":""}</small>`:""}<div class="pr">${eur(lineTotal(l))}</div></div>
+   <div class="block">${CART.lines.map((l,i)=>`<div class="cl"><div class="e">${l.img?ph(l.img,120,120):l.em}</div><div class="tx"><h4>${l.name}</h4>${l.opts.length||l.note?`<small>${l.opts.map(o=>o[0]).join(", ")}${l.note?(l.opts.length?" · ":"")+"“"+l.note+"”":""}</small>`:""}<div class="pr">${eur(lineTotal(l))}</div></div>
      <div class="stepper sm"><button onclick="chq(${i},-1)">${l.qty===1?"🗑":"−"}</button><span>${l.qty}</span><button onclick="chq(${i},1)">+</button></div></div>`).join("")}
      <div style="margin-top:10px;color:var(--brand);font-weight:700;font-size:14px;cursor:pointer" onclick="openRest(${r.id})">+ Add more items</div></div>
-   <div class="block"><h3>Popular with your order</h3><div class="hs" style="padding:0;gap:10px">${r.items.filter((_,i)=>!CART.lines.some(l=>l.idx===i)).slice(0,4).map(it=>{const i=r.items.indexOf(it);return `<div style="min-width:120px;cursor:pointer" onclick="openItem(${r.id},${i})"><div style="height:80px;border-radius:14px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:36px;position:relative">${it.em}<span class="plus" style="position:absolute;right:6px;bottom:6px;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 2px 6px rgba(0,0,0,.15)">+</span></div><div style="font-size:13px;font-weight:700;margin-top:6px">${it.name}</div><div class="muted" style="font-size:12px">${eur(it.price)}</div></div>`}).join("")}</div></div>
+   <div class="block"><h3>Popular with your order</h3><div class="hs" style="padding:0;gap:10px">${r.items.filter((_,i)=>!CART.lines.some(l=>l.idx===i)).slice(0,4).map(it=>{const i=r.items.indexOf(it);return `<div style="min-width:120px;cursor:pointer" onclick="openItem(${r.id},${i})"><div style="height:80px;border-radius:14px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:36px;position:relative">${it.img?ph(it.img,240,160):it.em}<span class="plus" style="position:absolute;right:6px;bottom:6px;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 2px 6px rgba(0,0,0,.15)">+</span></div><div style="font-size:13px;font-weight:700;margin-top:6px">${it.name}</div><div class="muted" style="font-size:12px">${eur(it.price)}</div></div>`}).join("")}</div></div>
    <div class="block"><div class="row" style="cursor:pointer" onclick="CO.cutlery=!CO.cutlery;rCart()"><span style="font-size:20px">🍴</span><div style="flex:1"><b style="font-size:14px">Cutlery</b><div class="muted" style="font-size:12px">Help reduce plastic — only ask if you need it</div></div><span class="opt ${CO.cutlery?'on':''}" style="border:0;padding:0"><span class="bx">✓</span></span></div></div>
    <div class="block"><div class="sumline"><span>Subtotal</span><span>${eur(sub)}</span></div>${short>0?`<div style="font-size:13px;color:var(--brand-d);font-weight:700;margin-top:6px">Add ${eur(short)} more to reach the ${eur(r.min)} minimum</div>`:""}</div>
    <div style="padding:16px 16px 30px"><button class="btn" ${short>0?"disabled":""} onclick="go('checkout')">Go to checkout · ${eur(sub)}</button></div>`;
@@ -829,7 +867,7 @@ function chq(i,d){const l=CART.lines[i];l.qty+=d;if(l.qty<=0)CART.lines.splice(i
 function totals(){
   const r=R(CART.rid),sub=cartSub();
   const fee=r.fee, svc=Math.min(2,Math.max(.5,sub*.03));
-  const disc=CO.promo==="WELCOME20"?Math.min(8,sub*.2):CO.promo==="FREEDEL"?fee:0;
+  const disc=CO.promo==="WELCOME20"?Math.min(8,sub*.2):CO.promo==="XMAS15"?Math.min(10,sub*.15):CO.promo==="FREEDEL"?fee:0;
   return {sub,fee,svc,disc,tip:CO.tip,total:sub+fee+svc-disc+CO.tip};
 }
 function rCheckout(){
@@ -842,7 +880,7 @@ function rCheckout(){
    <div class="block"><h3>Payment method</h3>
      ${[["card",`<span class="ic card">VISA</span>`,"Visa •••• 4242","Demo card"],["wallet",`<span class="ic"></span>`,"Mobile wallet","Pay with Face ID"],["cash",`<span class="ic">💶</span>`,"Cash on delivery","Pay the rider"]].map(([k,ic,l,s])=>`<div class="pay ${CO.pay===k?'on':''}" onclick="CO.pay='${k}';rCheckout()">${ic}<div><div>${l}</div><div class="muted" style="font-size:12px;font-weight:500">${s}</div></div><span class="rb"></span></div>`).join("")}
      <div style="color:var(--brand);font-weight:700;font-size:13px;cursor:pointer;margin-top:4px" onclick="addCard()">+ Add new card</div></div>
-   <div class="block"><h3>Promo code</h3><div class="promo-row"><input class="inp" id="pc" placeholder="Enter code" value="${CO.promo||""}" style="text-transform:uppercase"><button class="btn dark" onclick="applyPromo()">Apply</button></div>${CO.promo?`<div style="color:var(--ok);font-weight:700;font-size:13px;margin-top:8px">✓ ${CO.promo} applied — you save ${eur(t.disc)}</div>`:`<div class="muted" style="font-size:12px;margin-top:8px">Try <b>WELCOME20</b> or <b>FREEDEL</b></div>`}</div>
+   <div class="block"><h3>Promo code</h3><div class="promo-row"><input class="inp" id="pc" placeholder="Enter code" value="${CO.promo||""}" style="text-transform:uppercase"><button class="btn dark" onclick="applyPromo()">Apply</button></div>${CO.promo?`<div style="color:var(--ok);font-weight:700;font-size:13px;margin-top:8px">✓ ${CO.promo} applied — you save ${eur(t.disc)}</div>`:`<div class="muted" style="font-size:12px;margin-top:8px">Try <b>XMAS15</b>, <b>WELCOME20</b> or <b>FREEDEL</b></div>`}</div>
    <div class="block"><h3>Tip your rider</h3><div class="muted" style="font-size:12px;margin:-4px 0 10px">100% of your tip goes to the rider</div><div class="tips">${[0,1,2,3].map(x=>`<div class="chip ${CO.tip===x?'on':''}" onclick="CO.tip=${x};rCheckout()">${x?eur(x):"No tip"}</div>`).join("")}</div></div>
    <div class="block"><h3>Summary</h3>
      <div class="sumline"><span>Subtotal (${cartCount()} items)</span><span>${eur(t.sub)}</span></div>
@@ -853,7 +891,7 @@ function rCheckout(){
      <div class="sumline tot"><span>Total</span><span>${eur(t.total)}</span></div></div>
    <div style="padding:16px 16px 34px"><button class="btn" onclick="placeOrder()">${CO.pay==="cash"?"Place order":"Pay"} · ${eur(t.total)}</button><div class="secure">🔒 Secure checkout · demo, no real payment</div></div>`;
 }
-function applyPromo(){const c=$("#pc").value.trim().toUpperCase();if(["WELCOME20","FREEDEL"].includes(c)){CO.promo=c;toast("🎉 Promo applied");rCheckout()}else{toast("That code isn't valid");}}
+function applyPromo(){const c=$("#pc").value.trim().toUpperCase();if(["WELCOME20","FREEDEL","XMAS15"].includes(c)){CO.promo=c;toast("🎉 Promo applied");rCheckout()}else{toast("That code isn't valid");}}
 function editAddr(){
   openSheet(`<div class="sh-body"><h2 style="font-size:20px;margin:6px 0 14px">Delivery address</h2>
    <div class="res-h" style="padding:0 0 8px">Area in ${CITY.name}</div><div class="qr" style="margin:0 0 14px">${CITY.areas.map(a=>`<div class="chip ${ADDR.area===a?'on':''}" onclick="ADDR.area='${a}';this.parentNode.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">${a}</div>`).join("")}</div>
@@ -951,7 +989,7 @@ function tick(){
   if(t>8)fire("rid",o.rider[0]+" is your rider",o.rider[0]+" is heading to "+r.name);
   if(t>16)fire("pick","Order picked up! 🛵",o.rider[0]+" is on the way to you");
   if(t>T_TOTAL-12)fire("near","Almost there!",o.rider[0]+" is about 2 minutes away");
-  if(t>=T_TOTAL-4&&!TRK.done){TRK.done=true;o.status="delivered";fire("del","Delivered — kalí órexi! 😋","Tap to rate your order");$("#navdot").classList.add("hidden");setTimeout(()=>{if(cur==="track")rateSheet()},1600)}
+  if(t>=T_TOTAL-4&&!TRK.done){TRK.done=true;o.status="delivered";fire("del","Delivered — Merry Christmas! 🎄","Tap to rate your order");$("#navdot").classList.add("hidden");setTimeout(()=>{if(cur==="track")rateSheet()},1600)}
   if(cur!=="track"||!$("#rider"))return;
   // ETA
   const totalMin=r.eta[1]; const left=Math.max(0,Math.ceil((T_TOTAL-4-t)/(T_TOTAL-4)*totalMin));
@@ -999,7 +1037,7 @@ function rate(k,n){RATE[k]=n;document.querySelectorAll("#rs-"+k+" span").forEach
 function rOrders(){
   const v=$("#v-orders");
   v.innerHTML=`<div class="hdr" style="border-radius:0;margin-bottom:14px"><h1 style="font-size:24px;letter-spacing:-.5px">Orders</h1></div>`+
-   (ORDERS.length?ORDERS.map(o=>{const r=R(o.rid);return `<div class="ord"><div class="e" style="background:${r.grad}">${r.em}</div><div><h4>${r.name}</h4><small>${o.status==="live"?`<span class="live">Live · on the way</span>`:"Delivered · "+o.when.toTimeString().slice(0,5)} · ${eur(o.t.total)}</small><br><small>${o.lines.map(l=>l.qty+"× "+l.name).join(", ").slice(0,42)}</small></div><div class="act">${o.status==="live"?`<button onclick="go('track')">Track</button>`:`<button onclick="reorder(${o.id})">Reorder</button>`}</div></div>`}).join("")
+   (ORDERS.length?ORDERS.map(o=>{const r=R(o.rid);return `<div class="ord"><div class="e" style="background:${r.grad}">${r.img?ph(r.img,120,120):r.em}</div><div><h4>${r.name}</h4><small>${o.status==="live"?`<span class="live">Live · on the way</span>`:"Delivered · "+o.when.toTimeString().slice(0,5)} · ${eur(o.t.total)}</small><br><small>${o.lines.map(l=>l.qty+"× "+l.name).join(", ").slice(0,42)}</small></div><div class="act">${o.status==="live"?`<button onclick="go('track')">Track</button>`:`<button onclick="reorder(${o.id})">Reorder</button>`}</div></div>`}).join("")
    :`<div class="empty"><div class="e">🧾</div><h3>No orders yet</h3>Your orders will show up here.<div style="margin-top:20px"><button class="btn" onclick="go('home')">Start ordering</button></div></div>`)+`<div style="height:90px"></div>`;
 }
 function reorder(id){const o=ORDERS.find(x=>x.id===id);CART={rid:o.rid,lines:o.lines.map(l=>({...l}))};toast("Items added to basket");go("cart")}
@@ -1019,6 +1057,7 @@ function resetDemo(){CART={rid:null,lines:[]};ORDERS=[];TRK=null;FAV=new Set();C
 (function boot(){
   const s=document.documentElement.style; s.setProperty("--brand",BRAND.color); s.setProperty("--brand-d",BRAND.dark); s.setProperty("--brand-soft",BRAND.soft);
   document.title=BRAND.name+" — "+BRAND.slogan;
+  $("#v-splash").insertAdjacentHTML("afterbegin",snow(55,900));
   $("#side-title").textContent=BRAND.name; $("#notif-ap").innerHTML=BOLTSVG;
   const clk=()=>$("#clock").textContent=new Date().toTimeString().slice(0,5); clk(); setInterval(clk,15000);
   window.addEventListener("load",startIntro);setTimeout(startIntro,2500);
