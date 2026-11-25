@@ -93,12 +93,12 @@ h1,h2,h3,.sec h2,.banner h3,.eta-big h1{font-family:var(--disp);letter-spacing:-
 @keyframes flick{50%{opacity:.7}}
 .puffs circle{opacity:0;transform-box:fill-box;transform-origin:center;animation:puff .75s ease-out infinite}
 @keyframes puff{0%{opacity:.5;transform:translate(0,0) scale(.4)}100%{opacity:0;transform:translate(-46px,-10px) scale(2.2)}}
-#rideIn{transform:translateX(-360px);animation:rideIn 1.25s .15s cubic-bezier(.15,.85,.3,1) forwards}
+#rideIn{transform:translateX(-360px);animation:rideIn 2.1s .3s cubic-bezier(.2,.8,.3,1) forwards}
 @keyframes rideIn{0%{transform:translateX(-360px)}80%{transform:translateX(8px)}100%{transform:translateX(0)}}
-#rideOut{animation:rideOut .75s 2.65s cubic-bezier(.6,0,.9,.4) forwards;transform-box:fill-box;transform-origin:bottom center}
+#rideOut{animation:rideOut 1s 4.9s cubic-bezier(.6,0,.9,.4) forwards;transform-box:fill-box;transform-origin:bottom center}
 @keyframes rideOut{0%{transform:none}25%{transform:translateX(-14px) rotate(-3deg)}100%{transform:translateX(520px) rotate(-6deg)}}
 .zoomlines rect{opacity:0;animation:zl .55s ease-out infinite}
-#v-splash .zoomlines{opacity:0;animation:zlon .1s 2.7s forwards}
+#v-splash .zoomlines{opacity:0;animation:zlon .1s 5.05s forwards}
 @keyframes zlon{to{opacity:1}}
 @keyframes zl{0%{opacity:0;transform:translateX(420px)}30%{opacity:.9}100%{opacity:0;transform:translateX(-80px)}}
 .intro-top{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;margin-top:auto;padding-top:40px}
@@ -106,8 +106,9 @@ h1,h2,h3,.sec h2,.banner h3,.eta-big h1{font-family:var(--disp);letter-spacing:-
 .word span{display:inline-block;opacity:0;transform:translateY(26px) skewX(-14deg);animation:letter .5s cubic-bezier(.2,1.4,.4,1) forwards}
 .word span:nth-child(1){color:var(--zap)}
 @keyframes letter{to{opacity:1;transform:none}}
-.slogan{margin-top:10px;font-size:14px;letter-spacing:3.5px;text-transform:uppercase;font-weight:600;color:#B9B2A3;opacity:0;animation:fade .6s 1.75s forwards}
+.slogan{margin-top:10px;font-size:14px;letter-spacing:3.5px;text-transform:uppercase;font-weight:600;color:#B9B2A3;opacity:0;animation:fade .7s 3s forwards}
 .slogan b{color:var(--zap);font-weight:800}
+#v-splash:not(.play) *{animation-play-state:paused!important}
 .skip{position:absolute;z-index:3;bottom:max(14px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:12px;color:#ffffff55;letter-spacing:1px;opacity:0;animation:fade .5s 1.2s forwards}
 .wipe{position:absolute;inset:0;background:var(--brand);transform:translateX(105%);z-index:5}
 #v-splash.out .wipe{animation:wipe .6s cubic-bezier(.7,0,.3,1) forwards}
@@ -380,7 +381,7 @@ textarea:focus,.inp:focus{border-color:var(--ink)}
     <div id="stage">
       <section class="view" id="v-splash" onclick="skipIntro()">
         <div class="intro-top">
-          <div class="word"><span style="animation-delay:1.25s">Z</span><span style="animation-delay:1.32s">I</span><span style="animation-delay:1.39s">P</span><span style="animation-delay:1.46s">P</span><span style="animation-delay:1.53s">Y</span></div>
+          <div class="word"><span style="animation-delay:2.20s">Z</span><span style="animation-delay:2.31s">I</span><span style="animation-delay:2.41s">P</span><span style="animation-delay:2.52s">P</span><span style="animation-delay:2.62s">Y</span></div>
           <div class="slogan">Life moves <b>faster</b></div>
         </div>
         <svg class="scene" viewBox="34 52 300 248" preserveAspectRatio="xMidYMax slice">
@@ -1009,13 +1010,15 @@ function resetDemo(){CART={rid:null,lines:[]};ORDERS=[];TRK=null;FAV=new Set();C
   document.title=BRAND.name+" — "+BRAND.slogan;
   $("#side-title").textContent=BRAND.name; $("#notif-ap").innerHTML=BOLTSVG;
   const clk=()=>$("#clock").textContent=new Date().toTimeString().slice(0,5); clk(); setInterval(clk,15000);
-  INTRO_T=setTimeout(endIntro,3500);
+  window.addEventListener("load",startIntro);setTimeout(startIntro,2500);
   if("serviceWorker" in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
   setupInstall();
 })();
 var INTRO_T,introDone=false;
 function endIntro(){if(introDone)return;introDone=true;clearTimeout(INTRO_T);$("#v-splash").classList.add("out");setTimeout(()=>go("city",{noPush:true,force:true}),420)}
 function skipIntro(){endIntro()}
+var introStarted=false;
+function startIntro(){if(introStarted)return;introStarted=true;$("#v-splash").classList.add("play");INTRO_T=setTimeout(endIntro,6300)}
 let deferredPrompt=null;
 function isStandalone(){return window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}
 function dismissInstall(){$("#install").classList.add("hidden");try{sessionStorage.setItem("noinst","1")}catch(e){}}
